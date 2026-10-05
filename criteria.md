@@ -23,8 +23,11 @@ For at least 4 of my 5 test questions, the retrieved chunks include one that
 contains the answer.
 
 **Why this target:**
-<!-- e.g. "One of my questions is about a topic only two documents mention, so
-     I expect that one to be hard." -->
+Run the five `QUESTIONS` in `questions.py` with top-k 5, and read the retrieved
+text against the original documents; the `expects` phrases are clues, not a
+replacement for checking the full answer. The laundry question needs both a
+price and payment methods, and many residence posts contain similar prices,
+so 4 of 5 allows one difficult match while requiring coverage of most topics.
 
 ---
 
@@ -33,8 +36,11 @@ contains the answer.
 Every answer the system produces names at least one source document.
 
 **Why this target:**
-<!-- Why all five and not four? What about your setup makes that achievable —
-     or what would have to go wrong for it not to be? -->
+Check every substantive answer to `QUESTIONS`: each must cite at least one
+filename from the retrieved chunks in the answer itself. A gate refusal is not
+a substantive answer and should not invent a source. Every stored chunk
+carries its filename, so requiring a citation for every answer is achievable;
+allowing four out of five would leave one piece of student advice untraceable.
 
 ---
 
@@ -50,8 +56,12 @@ in at least 4 of 5 tries.
      just keep five of them, or the "4 of 5" above has nothing to be 4 of. -->
 
 **Why this target:**
-<!-- What did your distances look like when you set the cutoff in Milestone 4?
-     Was there a clean gap, or did the two groups overlap? -->
+Run each of the five `OUT_OF_SCOPE` questions in `questions.py` once; at least
+four must return the refusal without calling the generation function. Retrieval
+and the gate are deterministic, so five tries means five distinct questions.
+The corpus is limited to campus life, but its computing courses and health
+advice may share vocabulary with unrelated questions; 4 of 5 leaves one
+borderline match while requiring the gate to stop most unsupported requests.
 
 ---
 
