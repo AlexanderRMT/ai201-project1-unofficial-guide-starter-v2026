@@ -1,0 +1,34 @@
+python app.py ask 'What is the capital of Mongolia?'
+  (best distance 0.787, cutoff 0.52)
+
+I don't have enough information about that.
+
+0 model calls this session
+
+python app.py ask 'How do I change the oil in a diesel engine?'
+  (best distance 0.923, cutoff 0.52)
+
+I don't have enough information about that.
+
+0 model calls this session
+
+python app.py ask 'Who won the 1994 World Cup?'
+  (best distance 0.847, cutoff 0.52)
+
+I don't have enough information about that.
+
+0 model calls this session
+
+python app.py ask 'What is the recommended dosage of ibuprofen for a headache?'
+  (best distance 0.849, cutoff 0.52)
+
+I don't have enough information about that.
+
+0 model calls this session
+
+python app.py ask 'How do I write a for loop in Rust?'
+  (best distance 0.860, cutoff 0.52)
+
+I don't have enough information about that.
+
+0 model calls this session
