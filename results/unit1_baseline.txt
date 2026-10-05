@@ -1,0 +1,40 @@
+Milestone 1: unmodified starter chunker (800 characters, 120 overlap)
+Corpus: campus_life
+Function: chunker.py::fallback_split
+
+88 chunks, 317 characters on average (shortest 178, longest 549)
+
+Special activity command, run before replacing the chunker:
+python app.py --corpus advice_threads chunks -n 1
+
+26 chunks total. Showing 1, spread across the corpus.
+
+Special activity answer: 26
+
+Source inspection before implementation:
+- All 88 campus_life documents have a title followed by body paragraphs.
+- There are 183 body paragraphs; the longest with its title is 397 characters.
+- Kestrel Commons separates dining advice from hours and prices.
+- Old Brewhouse separates its description, advantages, heating, and laundry/noise.
+- The housing-lottery post keeps all of its eligibility distinctions together.
+
+These are document/chunk observations, not retrieval or answer evaluations.
+
+Starter end-to-end check, before replacing its chunker:
+python app.py index
+  loaded   88 documents, 27,908 characters, ~317 characters per document
+  stored   88 chunks
+
+python app.py ask "Is the housing lottery random?"
+  (best distance 0.254, cutoff 0.6)
+
+The housing lottery is not completely random in the way most people assume. While rising sophomores get a number drawn at random, juniors and seniors are ordered by accumulated credit hours first, with random selection used only for tie-breaks (admin_housing_lottery.txt).
+
+Sources retrieved: admin_housing_lottery.txt, admin_parking_permits.txt, advising_registration.txt, housing_morrow_house.txt, housing_tamsin_court.txt
+
+1 model calls this session, 672 tokens (617 in, 55 out)
+
+Environment check: Python 3.11.17 on Windows; 10 passed, 0 failed.
+All seven pinned dependencies import; real 384-dimensional MiniLM embeddings,
+Chroma cosine round trip, and Gemini API call succeeded.
+The local proxy additionally required socksio 1.0.0.
