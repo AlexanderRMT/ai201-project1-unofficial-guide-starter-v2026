@@ -1,6 +1,8 @@
 # The Unofficial Guide
 
-<!-- Replace this line with your name and which corpus you picked. -->
+AlexanderRMT — corpus: `campus_life`.
+
+Repository for both units: https://github.com/AlexanderRMT/ai201-project1-unofficial-guide-starter-v2026
 
 > **This file is your submission.** Fill it in as you go — most sections get
 > written during the milestone that produces them, not at the end.
@@ -21,6 +23,21 @@
 
 ## What This Does
 
+The Unofficial Guide searches the 88 student posts in the provided
+`campus_life` corpus. It answers questions about housing selection, dining
+queues, laundry, courses, and administrative deadlines using local embeddings
+and a persistent Chroma vector store. A distance gate rejects unrelated
+questions before Gemini is called; accepted questions are answered from the
+retrieved excerpts with filenames as sources. These documents are fictional
+course materials, not claims about Stanford or another real university.
+
+Setup and command reference: [RUNNING.md](RUNNING.md). Use Python 3.11–3.13,
+install `requirements.txt` in `.venv`, and set `GEMINI_API_KEY` in the ignored
+`.env` file. Then run `python test.py`, `python app.py index`, and
+`python app.py ask "Is the housing lottery random?"`.
+
+Scope: all required Unit 1 features; no optional stretch features declared.
+
 <!-- Three or four sentences. Which corpus you picked, and the kinds of
      questions your system answers. Write it for someone who has never seen
      this repo.
@@ -28,6 +45,22 @@
      Milestone 5. -->
 
 ## Chunking Strategy
+
+**Plan recorded before implementation:** split on body paragraph boundaries,
+repeat the post title in each chunk, and use a 600-character target including
+the title. Use zero body overlap: complete paragraphs retain their sentences,
+and repeating the title supplies the shared topic without duplicating the
+advice. For a paragraph that exceeds the target, pack complete sentences;
+allow an individual oversized sentence rather than cutting it in half.
+
+`dining_kestrel_commons.txt` separates queue/food advice from hours/prices.
+`housing_old_brewhouse.txt` separates the building description, good points,
+heating problems, and laundry/noise. `course_cs_210.txt` separates assessment,
+weekly workload, and lab advice. The original 800-character windows leave
+each of these as one chunk; paragraph boundaries let retrieval select a
+specific part while the repeated title identifies the dining hall, residence,
+or course. The single-paragraph housing-lottery explanation should stay intact
+because the distinctions between sophomores and older students belong together.
 
 **Chunk size:**
 **Overlap:**
