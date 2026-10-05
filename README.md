@@ -185,8 +185,11 @@ often, keep commits small and scoped, and use only me as the Git author. It
 changed the workflow to record the corpus plan, questions, supplied-criterion
 explanations, baseline evidence, chunker/tests, grounding instruction, and
 calibration command in separate commits. No co-author attribution was added.
-The two additional acceptance criteria are reserved for my own wording, as the
-assignment requires; AI may pressure-test them before measurements begin.
+I subsequently explicitly asked Codex to draft criteria 4 and 5 too. Those
+criteria are AI-assisted, despite the assignment's request for student-written
+criteria, and were committed before retrieval calibration but after the
+chunker and sample answer existed. This disclosure preserves the actual
+sequence rather than claiming independent authorship.
 
 Unit 2 has not been performed. Keep this repository and the original criteria;
 use `python run_eval.py --label before` in the next unit, then diagnose a miss,

@@ -1,16 +1,18 @@
 # Acceptance criteria — The Unofficial Guide
 
-Five criteria that say what "working" means for this system, written in unit 1
-**before** any results existed.
+Five criteria that say what "working" means for this system. The questions and
+first three targets were committed before calibration. Criteria 4 and 5 were
+AI-drafted at the student's explicit request after implementation and sample
+inspection, but **before the ten-question retrieval calibration and Unit 2
+acceptance evaluation**. They are not represented as independently
+student-written or as predating the starter demonstration.
 
 An acceptance criterion names a target: a number, a count, a rate, or something
 a person could plainly observe. *"Retrieval works"* is an opinion. *"For at
 least 4 of my 5 test questions, the top results include a chunk containing the
 answer"* is a criterion.
 
-Under each one, write a sentence or two on **why that target** and not a
-stricter or looser one. A reason that says something about your corpus or your
-pipeline earns credit; *"80% seemed reasonable"* does not.
+Each target below includes its test procedure and a corpus-specific reason.
 
 > Missing your own targets next unit costs you nothing. Setting a target so
 > easy you can't miss it does.
@@ -65,43 +67,37 @@ borderline match while requiring the gate to stop most unsupported requests.
 
 ---
 
-## 4. Something about your chunks
+## 4. Chunks preserve complete advice with its topic
 
-<!-- YOU WRITE THIS ONE.
+At least 9 of the 10 chunks printed by `python app.py chunks -n 10` must
+contain the source post's title and at least one complete body sentence,
+with no sentence cut off at either boundary, and be no longer than 600
+characters including the title. Compare each sample with its named file in
+`corpora/campus_life/documents/`; count a chunk as passing only if all four
+conditions hold.
 
-     How would you know if your chunks were the right size? Name something
-     countable or observable.
-
-     Examples of the right shape — don't copy these, they should come from
-     what you actually saw in Milestone 3:
-       - "At least 4 of 5 sampled chunks read as a complete thought, with no
-          sentence cut in half at either end."
-       - "No chunk is shorter than 200 characters, since anything below that
-          in my corpus turned out to be a heading with no content under it." -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** The campus posts separate advice into short paragraphs,
+but paragraphs such as "The good" need the residence title to identify their
+topic. Requiring 9 of 10 tolerates one awkward paragraph while requiring almost
+all samples to preserve sentence context within the chunker's size budget;
+requiring fewer would permit several fragments in a small sample.
 
 ---
 
-## 5. Your choice
+## 5. Cited evidence supports complete answers
 
-<!-- YOU WRITE THIS ONE TOO.
+For all 5 questions in `QUESTIONS` in `questions.py`, the answer must address
+every part of the question, and every factual claim must be explicitly
+supported by a retrieved chunk from the filename cited beside that claim.
+Compare the answer with its actual retrieved text; a refusal, an omitted
+subquestion, an uncited claim, or an unsupported number, time, payment method,
+or qualification makes that question fail. The target is 5 of 5 answers.
 
-     Pick something you actually care about getting right. It could be about
-     speed, about refusals, about a particular kind of question your corpus
-     handles badly, about source attribution being correct rather than merely
-     present — anything, as long as it names a number or an observable
-     outcome. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** Several residences mention similar laundry prices, and
+the Morrow House question asks for both the wash price and payment methods;
+simply printing a filename does not establish that either detail is supported.
+Five of five is stricter than the retrieval target because an unsupported
+price or deadline could mislead a student even when most answers are correct.
 
 ---
 
