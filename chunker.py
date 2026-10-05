@@ -1,27 +1,11 @@
 """
-Stage 2 of the pipeline: splitting documents into chunks.
+Stage 2: paragraph chunks with title context for the campus_life posts.
 
-⚠️ THIS IS THE FILE YOU CHANGE IN MILESTONE 3.
-
-`split_documents` below is deliberately plain. It cuts every document into
-fixed-size pieces with a fixed overlap and pays no attention to where sentences
-or paragraphs end. It works, and it is not good.
-
-On a corpus of short posts it may not cut anything at all: `campus_life` comes
-out as 88 documents and 88 chunks, because almost nothing in it reaches 800
-characters. That is the baseline, not a bug — Milestone 3 is where you decide
-whether one post should stay one chunk.
-
-Your job in Milestone 3 is to replace the *body* of `split_documents` with a
-strategy that fits the documents you actually read in Milestone 1. Keep the
-name and the shape of what it returns — the rest of the pipeline calls it, and
-your README has to name the function that produced your chunks.
-
-If you get stuck for 30 minutes, `fallback_split` is the original. Switch back
-to it, write down what you saw, and move on. That's a real observation about
-your pipeline, not giving up.
+The original fixed-window strategy remains as fallback_split for comparison.
+To reproduce the starter baseline, pass chunk_size=800 and overlap=120.
 """
 
+import re
 from dataclasses import dataclass
 
 import config
@@ -53,11 +37,11 @@ def fallback_split(
     Keep this function. Milestone 3's stop rule points back at it, and having
     something to compare your own strategy against is useful in unit 2.
     """
-    chunk_size = chunk_size or config.CHUNK_SIZE
-    overlap = overlap or config.CHUNK_OVERLAP
+    chunk_size = config.CHUNK_SIZE if chunk_size is None else chunk_size
+    overlap = config.CHUNK_OVERLAP if overlap is None else overlap
 
-    if overlap >= chunk_size:
-        raise ValueError("overlap has to be smaller than chunk_size")
+    if chunk_size <= 0 or overlap < 0 or overlap >= chunk_size:
+        raise ValueError("chunk_size must be positive and 0 <= overlap < chunk_size")
 
     chunks: list[Chunk] = []
     for doc in documents:
@@ -81,23 +65,46 @@ def fallback_split(
 
 
 def split_documents(documents: list[Document]) -> list[Chunk]:
+    """Keep each campus post's paragraphs intact and repeat its title.
+
+    CHUNK_SIZE is a soft character ceiling including the repeated title.
+    Long paragraphs are packed by sentence, with zero body overlap. A single
+    oversized sentence is retained whole instead of losing its context.
+    The corpus's paragraphs fit below the ceiling, so no sentence splitting
+    is needed for campus_life. A single-block document is treated as body.
     """
-    Split documents into chunks. ⚠️ REPLACE THE BODY OF THIS IN MILESTONE 3.
+    if config.CHUNK_SIZE <= 0:
+        raise ValueError("CHUNK_SIZE must be positive")
 
-    Right now it just calls the fallback. That is the plain, generic behaviour
-    the brief is talking about.
+    chunks: list[Chunk] = []
+    for doc in documents:
+        blocks = [block.strip() for block in re.split(r"\n\s*\n", doc.text) if block.strip()]
+        if not blocks:
+            continue
+        title = ""
+        if len(blocks) > 1 and "\n" not in blocks[0] and len(blocks[0]) <= 120:
+            title = blocks.pop(0) + "\n\n"
 
-    When you write your own strategy, set `produced_by` to
-    "chunker.py::split_documents" so your README's Sample Chunks section names
-    the right function. `app.py chunks` prints that string for you.
+        pieces: list[str] = []
+        for paragraph in blocks:
+            if len(title) + len(paragraph) <= config.CHUNK_SIZE:
+                pieces.append(paragraph)
+                continue
 
-    Things worth thinking about before you write any code:
-      - Are your documents short posts or long guides?
-      - Is the useful information in one sentence, or spread over a paragraph?
-      - Would splitting on paragraph breaks keep more thoughts intact than
-        splitting on a character count?
-    """
-    return fallback_split(documents)
+            current = ""
+            for sentence in re.split(r"(?<=[.!?])\s+", paragraph):
+                candidate = f"{current} {sentence}" if current else sentence
+                if current and len(title) + len(candidate) > config.CHUNK_SIZE:
+                    pieces.append(current)
+                    current = sentence
+                else:
+                    current = candidate
+            if current:
+                pieces.append(current)
+
+        for index, piece in enumerate(pieces):
+            chunks.append(Chunk(title + piece, doc.source, index, "chunker.py::split_documents"))
+    return chunks
 
 
 def describe(chunks: list[Chunk]) -> str:

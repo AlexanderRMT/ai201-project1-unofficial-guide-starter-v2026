@@ -24,11 +24,11 @@ CORPUS = os.getenv("AI201_CORPUS", "campus_life")
 
 
 # ─── Chunking (Milestone 3) ──────────────────────────────────────────────────
-# These are deliberately plain, generic numbers. Milestone 3 is where you
-# replace them with numbers that fit the documents you actually read.
+# Campus posts split at paragraphs with repeated titles. See README for the
+# document observations behind this strategy and the original baseline.
 
-CHUNK_SIZE = 800        # characters per chunk
-CHUNK_OVERLAP = 120     # characters shared between neighbouring chunks
+CHUNK_SIZE = 600        # soft ceiling including title; preserve paragraph/sentence boundaries
+CHUNK_OVERLAP = 0       # no body overlap; split_documents repeats the post title
 
 
 # ─── Retrieval (Milestone 4) ─────────────────────────────────────────────────
