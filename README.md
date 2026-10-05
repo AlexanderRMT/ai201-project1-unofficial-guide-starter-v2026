@@ -162,13 +162,62 @@ greater than or equal to the cutoff return exactly
 uses the best match; the grounding instruction still needs to distinguish
 supporting evidence from other retrieved material.
 
-**Cutoff status:** currently the starter's **0.6**, pending calibration. The
-five in-corpus and five out-of-scope distances have deliberately not been
-collected yet: the two student-authored criteria must first be committed.
-`python calibrate.py` will record all ten distances and all retrieved chunks
-in `results/unit1_retrieval.json` without calling Gemini. After selecting a
-cutoff from those measurements, this section must include the ten-row table
-and the observed ranges. This is the remaining Milestone 4 requirement.
+**My relevance cutoff: 0.52.** The five in-corpus best distances range from
+**0.163408 to 0.246099**; the five out-of-scope distances range from
+**0.787250 to 0.922791**. The midpoint between the worst in-corpus match and
+the nearest out-of-scope match is approximately 0.5167, rounded to 0.52.
+This leaves about 0.27 distance on either side of the observed gap. Lowering
+the cutoff below 0.2461 would start refusing one of these supported questions;
+raising it above 0.7873 would start admitting one of these unrelated questions.
+
+| Question | In corpus? | Best cosine distance |
+|---|---|---|
+| How are juniors and seniors ordered in the housing lottery? | Yes | 0.224974 |
+| How long is the lunch wait at Kestrel Commons between 12:15 and 1:00? | Yes | 0.163408 |
+| How much does one wash cost in Morrow House, and which payment methods work? | Yes | 0.222816 |
+| What happens to unused dining dollars at the end of the spring semester? | Yes | 0.240675 |
+| What appears on the transcript if I drop a course after week two but before the end of week six? | Yes | 0.246099 |
+| What is the capital of Mongolia? | No | 0.787250 |
+| How do I change the oil in a diesel engine? | No | 0.922791 |
+| Who won the 1994 World Cup? | No | 0.847429 |
+| What is the recommended dosage of ibuprofen for a headache? | No | 0.848693 |
+| How do I write a for loop in Rust? | No | 0.859783 |
+
+Measurements come from `python calibrate.py` after committing all five
+criteria. [results/unit1_retrieval.json](results/unit1_retrieval.json) preserves
+the full retrieved text, sources, and distances for every result, including
+all top-five chunks for the first three questions inspected in Milestone 4.
+The first housing result contains the credit-hour ordering rule. The Kestrel
+results contain both the original wait-time report and its corroborating
+follow-up. The two Morrow House price excerpts agree on the wash price and
+payment methods. Results for other residences and dining halls also appear,
+so the model must keep entities distinct instead of merging their numbers.
+
+I retained **top-k 5** to include corroborating reports and contextual details:
+for example, Kestrel's original queue report is third, while the follow-up is
+first. Each of the five questions has an answer-bearing result, but some of
+the remaining results are only loosely related. The gate tests the best
+match, not every chunk, so the grounding instruction is still necessary.
+
+With the chosen cutoff, **all five in-corpus questions pass the gate** and
+**all five out-of-scope questions are refused**. Actual CLI output for the
+latter is in [results/unit1_gate.txt](results/unit1_gate.txt); every invocation
+reports **0 model calls**. Example:
+
+```text
+Question: What is the capital of Mongolia?
+  (best distance 0.787, cutoff 0.52)
+
+I don't have enough information about that.
+
+0 model calls this session
+```
+
+These are development calibration observations, not a held-out accuracy score
+or the three-run Unit 2 evaluation. The easy off-topic questions leave a wide
+gap; an unsupported campus question could still pass, and a differently worded
+supported question could be refused. Changing the corpus, chunker, or embedding
+model requires re-indexing and recalibrating the cutoff.
 
 ## How I Used AI
 
@@ -194,5 +243,4 @@ sequence rather than claiming independent authorship.
 Unit 2 has not been performed. Keep this repository and the original criteria;
 use `python run_eval.py --label before` in the next unit, then diagnose a miss,
 attempt one improvement, and retain both sets of evidence. Submit the fork URL
-above through the Course Portal after the pending criteria and calibration
-are finished.
+above through the Course Portal. Portal submission remains a manual step.
