@@ -1,0 +1,435 @@
+{
+  "corpus": "campus_life",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "metric": "cosine",
+  "top_k": 5,
+  "chunk_size": 600,
+  "body_overlap": 0,
+  "questions": [
+    {
+      "question": "How are juniors and seniors ordered in the housing lottery?",
+      "expects": "credit hours",
+      "in_corpus": true,
+      "best_distance": 0.2249743938446045,
+      "results": [
+        {
+          "text": "On the housing lottery\n\nThe housing lottery is not random in the way most people assume. Rising sophomores get a number drawn at random, but juniors and seniors are ordered by accumulated credit hours first, and only tie-break randomly. That means a senior who took summer courses reliably beats a senior who didn't. Numbers come out the second week of March and selection runs over four evenings.",
+          "source": "admin_housing_lottery.txt",
+          "label": "admin_housing_lottery.txt#0",
+          "distance": 0.2249743938446045,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Morrow House — what it's actually like\n\nThe good: cheapest housing tier by about $900 a year, and the singles are real singles.",
+          "source": "housing_morrow_house.txt",
+          "label": "housing_morrow_house.txt#1",
+          "distance": 0.6779184203478696,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Aldridge Hall — what it's actually like\n\nI lived here my sophomore year. Built 1968, renovated 2019. Rooms are doubles with a shared bathroom per floor.",
+          "source": "housing_aldridge_hall.txt",
+          "label": "housing_aldridge_hall.txt#0",
+          "distance": 0.7120491837416367,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Registration and your adviser\n\nRegistration times are staggered by credit hours, same as the housing lottery. Popular courses fill in the first two days.",
+          "source": "advising_registration.txt",
+          "label": "advising_registration.txt#1",
+          "distance": 0.7209987044334412,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Calder Annexe — what it's actually like\n\nSecond-year here. Built 2003. Rooms are mostly singles, some doubles, in clusters of six around a lounge.",
+          "source": "housing_calder_annexe.txt",
+          "label": "housing_calder_annexe.txt#0",
+          "distance": 0.7260009037000623,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "How long is the lunch wait at Kestrel Commons between 12:15 and 1:00?",
+      "expects": "20 to 25 minutes",
+      "in_corpus": true,
+      "best_distance": 0.16340792179107666,
+      "results": [
+        {
+          "text": "Re: Kestrel Commons\n\nAdding to what people have said about Kestrel Commons. The wait figure of 20 to 25 minutes between 12:15 and 1:00 matches what I've seen. If you're trying to eat between classes, go before 11:45 and it's a different building entirely.",
+          "source": "dining_kestrel_commons_followup.txt",
+          "label": "dining_kestrel_commons_followup.txt#0",
+          "distance": 0.16340792179107666,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrel Commons\n\nHours are 7:00am to 9:00pm weekdays, 9:00am to 8:00pm weekends. Costs one meal swipe, or $12.50 cash.",
+          "source": "dining_kestrel_commons.txt",
+          "label": "dining_kestrel_commons.txt#1",
+          "distance": 0.26940155029296875,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrel Commons\n\nI'm a junior and I've done this twice now. Wait times: 20 to 25 minutes between 12:15 and 1:00, under 5 minutes before 11:45. The thing worth going for is the stir-fry station, made to order. The thing to know is that the salad bar wilts after 1:30.",
+          "source": "dining_kestrel_commons.txt",
+          "label": "dining_kestrel_commons.txt#0",
+          "distance": 0.354391872882843,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Re: The Ridgeway Café\n\nAdding to what people have said about The Ridgeway Café. The wait figure of 10 to 15 minutes at 12:30 matches what I've seen. If you're trying to eat between classes, go before 11:45 and it's a different building entirely.",
+          "source": "dining_the_ridgeway_cafe_followup.txt",
+          "label": "dining_the_ridgeway_cafe_followup.txt#0",
+          "distance": 0.3558635399568185,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Re: Halden Hall\n\nAdding to what people have said about Halden Hall. The wait figure of rarely more than 8 minutes matches what I've seen. If you're trying to eat between classes, go before 11:45 and it's a different building entirely.",
+          "source": "dining_halden_hall_followup.txt",
+          "label": "dining_halden_hall_followup.txt#0",
+          "distance": 0.3790743350982666,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "How much does one wash cost in Morrow House, and which payment methods work?",
+      "expects": "$1.50",
+      "in_corpus": true,
+      "best_distance": 0.22281581063308875,
+      "results": [
+        {
+          "text": "Laundry in Morrow House\n\nMachines take $1.50 wash, $1.25 dry, coin or card. There are eight washers and six dryers for the building, which is the wrong ratio and means the dryers back up on Sunday evenings.",
+          "source": "housing_morrow_house_laundry.txt",
+          "label": "housing_morrow_house_laundry.txt#0",
+          "distance": 0.22281581063308875,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Morrow House — what it's actually like\n\nLaundry costs $1.50 wash, $1.25 dry, coin or card. On noise: loud until about 1am on weekends, no enforced quiet hours.",
+          "source": "housing_morrow_house.txt",
+          "label": "housing_morrow_house.txt#3",
+          "distance": 0.24832574383410122,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Calder Annexe — what it's actually like\n\nLaundry costs $2.00 wash, $1.75 dry, app-based. On noise: depends entirely on your cluster; there's no building-wide pattern.",
+          "source": "housing_calder_annexe.txt",
+          "label": "housing_calder_annexe.txt#3",
+          "distance": 0.41490549790059683,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Laundry in Morrow House\n\nBest time to do laundry here is Tuesday or Wednesday morning. Sunday after 6pm you will wait.",
+          "source": "housing_morrow_house_laundry.txt",
+          "label": "housing_morrow_house_laundry.txt#1",
+          "distance": 0.4183951409220388,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Laundry in Innisfree Hall\n\nMachines take $1.75 wash, $1.75 dry, app-based. There are eight washers and six dryers for the building, which is the wrong ratio and means the dryers back up on Sunday evenings.",
+          "source": "housing_innisfree_hall_laundry.txt",
+          "label": "housing_innisfree_hall_laundry.txt#0",
+          "distance": 0.43297460611791483,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "What happens to unused dining dollars at the end of the spring semester?",
+      "expects": "May",
+      "in_corpus": true,
+      "best_distance": 0.2406749129295349,
+      "results": [
+        {
+          "text": "On the dining dollars\n\nDeclining balance — what everyone calls dining dollars — rolls over from the autumn semester to the spring, but not from spring to the following autumn. Whatever is left in May disappears.",
+          "source": "admin_dining_dollars.txt",
+          "label": "admin_dining_dollars.txt#0",
+          "distance": 0.2406749129295349,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On the meal plan changes\n\nYou can change your meal plan tier once, in the first ten days of the semester. After that it's locked. Downgrading refunds the difference to your student account; upgrading bills you immediately.",
+          "source": "admin_meal_plan_changes.txt",
+          "label": "admin_meal_plan_changes.txt#0",
+          "distance": 0.5104520320892334,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Pellew Dining Hall\n\nHours are 7:00am to 8:00pm daily. Costs one meal swipe, or $11.75 cash.",
+          "source": "dining_pellew_dining_hall.txt",
+          "label": "dining_pellew_dining_hall.txt#1",
+          "distance": 0.5879173278808594,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On-campus work\n\nLibrary and dining jobs post in the first week of each semester and go fast. Pay is the same across departments — the difference is whether you can study during the shift. Library desk: usually yes. Dining: no.",
+          "source": "money_jobs.txt",
+          "label": "money_jobs.txt#0",
+          "distance": 0.6232361315182688,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On the printing quota\n\nEvery student gets $30 of printing per semester, which is roughly 600 black-and-white pages. It does not roll over. Colour costs eight times as much per page, which people discover after printing one poster.",
+          "source": "admin_printing_quota.txt",
+          "label": "admin_printing_quota.txt#0",
+          "distance": 0.6452438235282898,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "What appears on the transcript if I drop a course after week two but before the end of week six?",
+      "expects": "W",
+      "in_corpus": true,
+      "best_distance": 0.24609851837158203,
+      "results": [
+        {
+          "text": "On the add/drop deadline\n\nYou can add a course through the end of the second week. Dropping is a longer window — through the end of week six — but a drop after week two shows as a W on your transcript. Nothing anywhere on the registrar's site says this plainly, and students find out from each other.",
+          "source": "admin_add_drop_deadline.txt",
+          "label": "admin_add_drop_deadline.txt#0",
+          "distance": 0.24609851837158203,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On the withdrawal deadline\n\nWithdrawal is a different thing from dropping and has a different date. Dropping ends at week six. Withdrawal runs to week ten, requires an adviser signature, and puts a W on the transcript that doesn't affect GPA. The two dates appear on different pages of the registrar's site and this catches people every year.",
+          "source": "admin_withdrawal_deadline.txt",
+          "label": "admin_withdrawal_deadline.txt#0",
+          "distance": 0.452487051486969,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On the pass/fail option\n\nAny course outside your major can be taken pass/fail, and — the part nobody mentions — you can declare it as late as week eight, after you've seen your midterm. A pass needs a C- or better. Two per year, maximum eight across a degree.",
+          "source": "admin_pass_fail_option.txt",
+          "label": "admin_pass_fail_option.txt#0",
+          "distance": 0.5285516977310181,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Registration and your adviser\n\nRegistration times are staggered by credit hours, same as the housing lottery. Popular courses fill in the first two days.",
+          "source": "advising_registration.txt",
+          "label": "advising_registration.txt#1",
+          "distance": 0.5455845594406128,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On the transcript requests\n\nOfficial transcripts cost $8 and take three business days electronically, or ten by post. Unofficial ones are free and instant from the student portal, and are accepted by most employers and by every graduate programme at the application stage.",
+          "source": "admin_transcript_requests.txt",
+          "label": "admin_transcript_requests.txt#0",
+          "distance": 0.5886920690536499,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "What is the capital of Mongolia?",
+      "in_corpus": false,
+      "best_distance": 0.7872501611709595,
+      "results": [
+        {
+          "text": "HIST 118 Modern World History — assessment\n\nNo exams; two essays and a final project. Not curved.",
+          "source": "course_hist_118_exams.txt",
+          "label": "course_hist_118_exams.txt#0",
+          "distance": 0.7872501611709595,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "HIST 118 Modern World History\n\nTransferred in last year, so take this with a grain of salt. Format is discussion-led seminar, attendance is 15% of the grade. Assessment: no exams; two essays and a final project. Not curved.",
+          "source": "course_hist_118.txt",
+          "label": "course_hist_118.txt#0",
+          "distance": 0.8258572220802307,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Morrow House — what it's actually like\n\nJust finished a year in this building. Built 1954, partially renovated 2008. Rooms are singles and doubles, hall bathrooms.",
+          "source": "housing_morrow_house.txt",
+          "label": "housing_morrow_house.txt#0",
+          "distance": 0.8416296123631105,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "HIST 118 Modern World History — assessment\n\nThe essay rubric is posted in week 2 and it's followed exactly — read it early.",
+          "source": "course_hist_118_exams.txt",
+          "label": "course_hist_118_exams.txt#1",
+          "distance": 0.8571359515190125,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "What winter is actually like here\n\nThe paths get cleared by 7am on weekdays and considerably later on weekends.",
+          "source": "winter_gear.txt",
+          "label": "winter_gear.txt#1",
+          "distance": 0.8795620326314144,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "How do I change the oil in a diesel engine?",
+      "in_corpus": false,
+      "best_distance": 0.9227911829948425,
+      "results": [
+        {
+          "text": "ECON 101 Introduction to Economics — assessment\n\nTwo midterms and a final, all multiple choice. Curved, and generously.",
+          "source": "course_econ_101_exams.txt",
+          "label": "course_econ_101_exams.txt#0",
+          "distance": 0.9227911829948425,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Verrill Street Grill\n\nHours are 11:00am to 1:00am daily during term. Costs declining balance, or cash after 11:00pm.",
+          "source": "dining_verrill_street_grill.txt",
+          "label": "dining_verrill_street_grill.txt#1",
+          "distance": 0.9231169079922815,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "STAT 150 Applied Statistics\n\nThe one piece of advice: the dropped midterm makes the first one low-stakes; use it to learn the format.",
+          "source": "course_stat_150.txt",
+          "label": "course_stat_150.txt#2",
+          "distance": 0.9335387945175171,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On the meal plan changes\n\nYou can change your meal plan tier once, in the first ten days of the semester. After that it's locked. Downgrading refunds the difference to your student account; upgrading bills you immediately.",
+          "source": "admin_meal_plan_changes.txt",
+          "label": "admin_meal_plan_changes.txt#0",
+          "distance": 0.9340105652809143,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "ENGL 205 Writing for the Sciences\n\nThe one piece of advice: the portfolio is graded on revision, so keep your drafts — you're marked on the distance travelled.",
+          "source": "course_engl_205.txt",
+          "label": "course_engl_205.txt#2",
+          "distance": 0.9382784962654114,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "Who won the 1994 World Cup?",
+      "in_corpus": false,
+      "best_distance": 0.8474287986755371,
+      "results": [
+        {
+          "text": "HIST 118 Modern World History — assessment\n\nNo exams; two essays and a final project. Not curved.",
+          "source": "course_hist_118_exams.txt",
+          "label": "course_hist_118_exams.txt#0",
+          "distance": 0.8474287986755371,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "HIST 118 Modern World History\n\nTransferred in last year, so take this with a grain of salt. Format is discussion-led seminar, attendance is 15% of the grade. Assessment: no exams; two essays and a final project. Not curved.",
+          "source": "course_hist_118.txt",
+          "label": "course_hist_118.txt#0",
+          "distance": 0.8986334800720215,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Innisfree Hall — what it's actually like\n\nTransferred in last year, so take this with a grain of salt. Built 1991, renovated 2022. Rooms are doubles arranged as pairs sharing one bathroom between two rooms.",
+          "source": "housing_innisfree_hall.txt",
+          "label": "housing_innisfree_hall.txt#0",
+          "distance": 0.9010205586923432,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "HIST 118 Modern World History — assessment\n\nThe essay rubric is posted in week 2 and it's followed exactly — read it early.",
+          "source": "course_hist_118_exams.txt",
+          "label": "course_hist_118_exams.txt#1",
+          "distance": 0.9051842093467712,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "BIOL 160 Cell Biology\n\nExpect 9 to 11 hours a week, the heaviest first-year course by reputation.",
+          "source": "course_biol_160.txt",
+          "label": "course_biol_160.txt#1",
+          "distance": 0.9248058795928955,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "What is the recommended dosage of ibuprofen for a headache?",
+      "in_corpus": false,
+      "best_distance": 0.8486932211332645,
+      "results": [
+        {
+          "text": "Textbooks without paying full price\n\nThe library holds one copy of most required texts on two-hour reserve. For courses where the text is used constantly that isn't enough, but for the reading-light courses it's genuinely all you need.",
+          "source": "money_textbooks.txt",
+          "label": "money_textbooks.txt#0",
+          "distance": 0.8486932211332645,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "The Ridgeway Café\n\nHours are 7:00am to 4:00pm weekdays only. Costs declining balance only, no meal swipes.",
+          "source": "dining_the_ridgeway_cafe.txt",
+          "label": "dining_the_ridgeway_cafe.txt#1",
+          "distance": 0.8534945808649308,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Noise levels in Morrow House\n\nAsked about this a lot so writing it down. Loud until about 1am on weekends, no enforced quiet hours.",
+          "source": "housing_morrow_house_noise.txt",
+          "label": "housing_morrow_house_noise.txt#0",
+          "distance": 0.8690428396119435,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "On the pass/fail option\n\nAny course outside your major can be taken pass/fail, and — the part nobody mentions — you can declare it as late as week eight, after you've seen your midterm. A pass needs a C- or better. Two per year, maximum eight across a degree.",
+          "source": "admin_pass_fail_option.txt",
+          "label": "admin_pass_fail_option.txt#0",
+          "distance": 0.8758121132850647,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "The Ridgeway Café\n\nSecond-year here. Wait times: 10 to 15 minutes at 12:30, none after 2:00. The thing worth going for is the only place on campus with real espresso. The thing to know is that seating is tight; about 40 seats for a building of 900.",
+          "source": "dining_the_ridgeway_cafe.txt",
+          "label": "dining_the_ridgeway_cafe.txt#0",
+          "distance": 0.8783534561111909,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "How do I write a for loop in Rust?",
+      "in_corpus": false,
+      "best_distance": 0.8597827553749084,
+      "results": [
+        {
+          "text": "HIST 118 Modern World History — assessment\n\nThe essay rubric is posted in week 2 and it's followed exactly — read it early.",
+          "source": "course_hist_118_exams.txt",
+          "label": "course_hist_118_exams.txt#1",
+          "distance": 0.8597827553749084,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "HIST 118 Modern World History\n\nThe one piece of advice: the essay rubric is posted in week 2 and it's followed exactly — read it early.",
+          "source": "course_hist_118.txt",
+          "label": "course_hist_118.txt#2",
+          "distance": 0.8635140657424927,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "ENGL 205 Writing for the Sciences\n\nTransferred in last year, so take this with a grain of salt. Format is workshop format, you write every week and peers read it. Assessment: no exams; a portfolio of six revised pieces. Not curved.",
+          "source": "course_engl_205.txt",
+          "label": "course_engl_205.txt#0",
+          "distance": 0.8768333196640015,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "ENGL 205 Writing for the Sciences — assessment\n\nNo exams; a portfolio of six revised pieces. Not curved.",
+          "source": "course_engl_205_exams.txt",
+          "label": "course_engl_205_exams.txt#0",
+          "distance": 0.8809599280357361,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "CS 210 Data Structures — assessment\n\nTwo midterms and a final, all drawn from lecture material rather than the textbook. Midterms are curved, the final is not.",
+          "source": "course_cs_210_exams.txt",
+          "label": "course_cs_210_exams.txt#0",
+          "distance": 0.8904197216033936,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    }
+  ]
+}
